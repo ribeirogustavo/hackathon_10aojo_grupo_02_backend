@@ -7,6 +7,9 @@ spring:
     hibernate:
       ddl-auto: none
     show-sql: true
+  security:
+    username: ${AUTH_USERNAME}
+    password: ${AUTH_PASSWORD}
 
 server:
   port: 8080

@@ -27,4 +27,21 @@ jobs:
         run: chmod +x ./gradlew
         
       - name: Execute Gradle build
-        run: ./gradlew build test
+        run: ./gradlew build test compileJava
+
+#      - name: Build imagem
+#        run: docker build -t hackaton-backend .
+
+      - name: upload image to ECR
+        uses: appleboy/docker-ecr-action@master
+        with:
+          access_key: ${{ secrets.aws_access_key_id }}
+          secret_key: ${{ secrets.aws_secret_access_key }}
+          registry: ${{ secrets.registry }}
+          cache_from: ${{ secrets.cache }}
+          repo: grupotresecr
+          region: us-east-1
+          auto_tag: true
+          daemon_off: false
+          dockerfile: hackaton-backend/Dockerfile
+          context: example
