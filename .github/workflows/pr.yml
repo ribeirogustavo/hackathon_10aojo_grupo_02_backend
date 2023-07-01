@@ -5,6 +5,9 @@ on:
     types:
       - opened
       - edited
+  push:
+    branches:
+      - 'feature/**'
 
 jobs:
   build:
