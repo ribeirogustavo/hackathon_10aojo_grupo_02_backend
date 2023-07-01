@@ -29,9 +29,6 @@ jobs:
       - name: Execute Gradle build
         run: ./gradlew build test compileJava
 
-      - name: Mover JAR
-        run: mv build/libs/*.jar ./ROOT.jar
-
 #      - name: Build imagem
 #        run: docker build -t hackaton-backend .
 
